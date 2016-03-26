@@ -34,14 +34,35 @@ while (!feof($myfile)) {
             'loc_time'=>time(),
             'entity_name'=>'比赛无人车2'
         );
+        $array2=array(
+            'ak'=>'ABMyPFHzCuKItIEoAG2FZjtt',
+            'service_id'=>'112988',
+            'latitude'=>(substr($str_arr[1], 0, -1)+0.001),
+            'longitude'=>(substr($str_arr[2], 0, -1)+0.001),
+            'coord_type'=>1,
+            'loc_time'=>time(),
+            'entity_name'=>'比赛无人车'
+        );
+        $array3=array(
+            'ak'=>'ABMyPFHzCuKItIEoAG2FZjtt',
+            'service_id'=>'112988',
+            'latitude'=>(substr($str_arr[1], 0, -1)-0.001),
+            'longitude'=>(substr($str_arr[2], 0, -1)-0.001),
+            'coord_type'=>1,
+            'loc_time'=>time(),
+            'entity_name'=>'比赛无人车3'
+        );
         $data=curl_post("http://api.map.baidu.com/trace/v2/track/addpoint", $array);
+        $data=curl_post("http://api.map.baidu.com/trace/v2/track/addpoint", $array2);
+        $data=curl_post("http://api.map.baidu.com/trace/v2/track/addpoint", $array3);
         $result=json_decode($data,true);
         if($result['status']==0){
             echo "上传成功\n";
         }else{
             echo "上传失败\n";
+            exit();
         }
-        sleep(3);
+        sleep(1);
     }
 }
 fclose($myfile);
