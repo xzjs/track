@@ -22,4 +22,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/view',function(){
         return view('view');
     });
+
+    Route::get('/hello',function(){
+        return 'hello';
+    });
 });
