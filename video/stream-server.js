@@ -61,7 +61,6 @@ var streamServer = require('http').createServer( function(request, response) {
 		);
 		request.on('data', function(data){
 			socketServer.broadcast(data);
-			console.log(data);
 		});
 	}
 	else {
