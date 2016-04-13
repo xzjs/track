@@ -42,6 +42,7 @@
     var img=document.getElementById('img');
     client.onmessage=function(e){
         img.src= e.data;
+        console.log(e.data);
     }
 </script>
 </body>
