@@ -60,7 +60,8 @@ var streamServer = require('http').createServer( function(request, response) {
 			':' + request.socket.remotePort + ' size: ' + width + 'x' + height
 		);
 		request.on('data', function(data){
-			socketServer.broadcast(data, {binary:true});
+			socketServer.broadcast(data);
+			console.log(data);
 		});
 	}
 	else {
