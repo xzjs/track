@@ -40,8 +40,8 @@
     //var canvas = document.getElementById('videoCanvas');
     //var player = new jsmpeg(client, {canvas: canvas, autoplay: true});
     var img=document.getElementById('img');
-    client.onmessage=function(event){
-        img.src=event;
+    client.onmessage=function(e){
+        img.src= e.data;
     }
 </script>
 </body>
