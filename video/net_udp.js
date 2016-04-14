@@ -1,7 +1,6 @@
 /**
  * Created by xzjs on 16/4/14.
  */
-
 var STREAM_PORT = process.argv[2] || 9091,
     WEBSOCKET_PORT = process.argv[3] || 9092;
 
@@ -28,7 +27,7 @@ socketServer.broadcast = function (data) {
 };
 
 
-/** dgram **/
+
 var dgram = require("dgram");
 var server = dgram.createSocket("udp4");
 
@@ -47,7 +46,7 @@ server.on("message", function (msg, rinfo) {
     } else {
         socketServer.broadcast(total_str);
     }
-    console.log("server got: " + str + " from " +
+    console.log("server got: " + msg + " from " +
         rinfo.address + ":" + rinfo.port);
 });
 server.on("listening", function () {
@@ -56,4 +55,3 @@ server.on("listening", function () {
         address.address + ":" + address.port);
 });
 server.bind(STREAM_PORT, '192.168.4.96');
-
