@@ -12,10 +12,13 @@ for(var i=0;i<str.length;i+=1000){
     udp_send(str.substr(i,1000));
 }
 udp_send('end');
+
 function udp_send(buffer){
     var message=new Buffer(buffer);
     socket.send(message, 0, message.length, 9999, '192.168.4.96', function(err, bytes) {
+        if(err){
+            console.log(err);
+        }
         socket.close();
-        console.log(err);
     });
 }

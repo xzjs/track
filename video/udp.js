@@ -34,6 +34,8 @@ var server = dgram.createSocket("udp4");
 
 var total_str = '';
 
+var i=0;
+
 server.on("error", function (err) {
     console.log("server error:\n" + err.stack);
     server.close();
@@ -47,8 +49,9 @@ server.on("message", function (msg, rinfo) {
     } else {
         socketServer.broadcast(total_str);
     }
-    console.log("server got: " + str + " from " +
+    console.log("server got#: "+i + str + " from " +
         rinfo.address + ":" + rinfo.port);
+    i++;
 });
 server.on("listening", function () {
     var address = server.address();
