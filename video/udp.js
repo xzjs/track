@@ -49,7 +49,7 @@ server.on("message", function (msg, rinfo) {
     } else {
         socketServer.broadcast(total_str);
     }
-    console.log("server got#: "+i + str + " from " +
+    console.log("server got: #"+i+" " + str + " from " +
         rinfo.address + ":" + rinfo.port);
     i++;
 });
