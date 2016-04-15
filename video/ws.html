@@ -24,7 +24,7 @@
             str="";
         }else if(e.data!="end"){
             str+= e.data;
-        }else {
+        }else if(e.data=="end"){
             img.src = str;
             console.log(str);
         }
