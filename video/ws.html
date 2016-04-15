@@ -7,16 +7,24 @@
 <body>
 <img id="img" src="#" alt="图片没过来">
 <script>
-    var client = new WebSocket('ws://192.168.4.96:9092');
+    var client = new WebSocket('ws://127.0.0.1:9092');
 
     var img=document.getElementById('img');
+
+    var str="";
 
     client.open=function(){
         console.log('open');
     }
 
     client.onmessage=function(e){
-        img.src= e.data;
+        if(e.data=="start"){
+            str="";
+        }else if(e.data!="end"){
+            str+= e.data;
+        }else{
+            img.src=str;
+        }
         console.log(e.data);
     }
 

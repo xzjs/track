@@ -42,13 +42,14 @@ server.on("error", function (err) {
 });
 server.on("message", function (msg, rinfo) {
     var str = msg.toString();
-    if (str == 'start') {
+    /*if (str == 'start') {
         total_str = '';
     } else if (str != 'end') {
         total_str += str;
     } else {
         socketServer.broadcast(total_str);
-    }
+    }*/
+    socketServer.broadcast(str);
     console.log("server got: #"+i+" " + str + " from " +
         rinfo.address + ":" + rinfo.port);
     i++;
@@ -58,5 +59,5 @@ server.on("listening", function () {
     console.log("server listening " +
         address.address + ":" + address.port);
 });
-server.bind(STREAM_PORT, '192.168.4.96');
+server.bind(STREAM_PORT, '127.0.0.1');
 
