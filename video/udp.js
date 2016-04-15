@@ -59,5 +59,5 @@ server.on("listening", function () {
     console.log("server listening " +
         address.address + ":" + address.port);
 });
-server.bind(STREAM_PORT, '127.0.0.1');
+server.bind(STREAM_PORT, '192.168.4.96');
 
