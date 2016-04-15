@@ -13,6 +13,8 @@
 
     var str="";
 
+    var i=0;
+
     client.open=function(){
         console.log('open');
     }
@@ -25,7 +27,8 @@
         }else{
             img.src=str;
         }
-        console.log(e.data);
+        console.log("#"+i+" "+e.data);
+        i++;
     }
 
     client.onclose=function(){

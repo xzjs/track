@@ -16,7 +16,7 @@ udp_send('end');
 
 function udp_send(buffer){
     var message=new Buffer(buffer);
-    socket.send(message, 0, message.length, 9999, '127.0.0.1', function(err, bytes) {
+    socket.send(message, 0, message.length, 9999, '192.168.4.96', function(err, bytes) {
         if(err){
             console.log(err);
         }
