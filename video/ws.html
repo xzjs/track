@@ -5,38 +5,47 @@
     <title></title>
 </head>
 <body>
+<input type="text" value="127.0.0.1" id="address">
+<input type="button" onclick="my_click()" value="开始">
 <img id="img" src="#" alt="图片没过来">
 <script>
-    var client = new WebSocket('ws://192.168.4.96:9092');
+    var address = "127.0.0.1";
 
-    var img=document.getElementById('img');
+    var client = new WebSocket('ws://' + address + ':9092');
 
-    var str="";
+    var img = document.getElementById('img');
 
-    var i=0;
+    var str = "";
 
-    client.open=function(){
+    var i = 0;
+
+    function my_click() {
+        var text = document.getElementById('address');
+        address = text.value;
+        client = new WebSocket('ws://' + address + ':9092');
+    }
+    client.open = function () {
         console.log('open');
     }
 
-    client.onmessage=function(e){
-        if(e.data=="start"){
-            str="";
-        }else if(e.data!="end"){
-            str+= e.data;
-        }else if(e.data=="end"){
+    client.onmessage = function (e) {
+        if (e.data == 'start') {
+            str = "";
+        } else if (e.data != 'end') {
+            str += e.data;
+        } else if (e.data == 'end') {
             img.src = str;
             console.log(str);
         }
-        console.log("#"+i+" "+e.data);
+        console.log("#" + i + " " + e.data);
         i++;
     }
 
-    client.onclose=function(){
+    client.onclose = function () {
         console.log("WebSocketClosed!");
     }
 
-    client.onerror=function(evt){
+    client.onerror = function (evt) {
         console.log(evt.data);
     }
 </script>
