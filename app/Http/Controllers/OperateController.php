@@ -45,8 +45,7 @@ class OperateController extends Controller
         $operate= new Operate();
         $operate->operate_no=$request->operate_no;
         $operate->car_id=$request->car_id;
-        $operate->save();
-        return redirect('/operate');
+        echo $operate->save();
     }
 
     /**
