@@ -24,7 +24,7 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('hello',function(){
-        return 'hello';
+        return 'hello world';
     });
 
     Route::resource('car','CarController');
