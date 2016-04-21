@@ -31,4 +31,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('car','CarController');
 
     Route::resource('operate','OperateController');
+
+    Route::resource('obstacle','ObstacleController');
 });
