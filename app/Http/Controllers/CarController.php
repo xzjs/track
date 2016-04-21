@@ -44,7 +44,7 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        //
+        return Car::find($id)->toJson();
     }
 
     /**
