@@ -17,11 +17,8 @@ class OperateController extends Controller
     public function index()
     {
         $operate=new Operate();
-        $datas=$operate::all();
-        foreach ($datas as $data) {
-            echo $data->operate_no.'<br>';
-        }
-
+        $datas=$operate::all()->toJson();
+        return $datas;
     }
 
     /**

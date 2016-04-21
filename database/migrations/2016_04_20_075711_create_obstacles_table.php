@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCarTables extends Migration
+class CreateObstaclesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateCarTables extends Migration
      */
     public function up()
     {
-        Schema::create('cars', function (Blueprint $table) {
+        Schema::create('obstacles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->double('lat')->comment('纬度');
-            $table->double('lon')->comment('经度');
-            $table->boolean('added')->comment('是否添加');
+            $table->double('size')->comment('障碍物半径');
+            $table->double('lat')->comment('障碍物经度');
+            $table->double('lon')->comment('障碍物纬度');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateCarTables extends Migration
      */
     public function down()
     {
-        Schema::drop('cars');
+        Schema::drop('obstacles');
     }
 }

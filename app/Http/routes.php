@@ -23,10 +23,11 @@ Route::group(['middleware' => ['web']], function () {
         return view('view');
     });
 
-    Route::get('hello',function(){
+    Route::get('/hello',function(){
         return 'hello world';
     });
 
+    Route::get('car/add/{num?}','CarController@add');
     Route::resource('car','CarController');
 
     Route::resource('operate','OperateController');
