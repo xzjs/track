@@ -6,6 +6,7 @@ use App\Car;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Mockery\CountValidator\Exception;
 
 class CarController extends Controller
 {
@@ -78,7 +79,7 @@ class CarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo Car::find($id)->delete();
     }
 
     /**
@@ -92,5 +93,22 @@ class CarController extends Controller
         Car::whereIn('id', $car_ids)->update(['added' => 1]);
         return $car_ids->toJson();
 
+    }
+
+    /**
+     * web端删除车辆
+     * @param $id
+     * @return string
+     */
+    public function delete($id)
+    {
+        try {
+            $car = Car::find($id);
+            $car->added = 0;
+            $car->save();
+            return '1';
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
     }
 }

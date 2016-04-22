@@ -19,3 +19,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(\App\Obstacle::class,function(Faker\Generator $faker){
+   return[
+       'size'=>rand(1,10),
+       'lat'=>rand(0,90),
+       'lon'=>rand(0,360)
+   ];
+});

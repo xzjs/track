@@ -28,6 +28,7 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('car/add/{num?}','CarController@add');
+    Route::get('car/delete/{id}','CarController@delete');
     Route::resource('car','CarController');
 
     Route::resource('operate','OperateController');

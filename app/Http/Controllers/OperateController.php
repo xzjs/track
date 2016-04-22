@@ -6,6 +6,7 @@ use App\Operate;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Mockery\CountValidator\Exception;
 
 class OperateController extends Controller
 {
@@ -16,8 +17,8 @@ class OperateController extends Controller
      */
     public function index()
     {
-        $operate=new Operate();
-        $datas=$operate::all()->toJson();
+        $operate = new Operate();
+        $datas = $operate::all()->toJson();
         return $datas;
     }
 
@@ -34,21 +35,26 @@ class OperateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $operate= new Operate();
-        $operate->operate_no=$request->operate_no;
-        $operate->car_id=$request->car_id;
-        echo $operate->save();
+        try {
+            $operate = new Operate();
+            $operate->operate_no = $request->operate_no;
+            $operate->car_id = $request->car_id;
+            $operate->save();
+            return 1;
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -59,7 +65,7 @@ class OperateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -70,8 +76,8 @@ class OperateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -82,7 +88,7 @@ class OperateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

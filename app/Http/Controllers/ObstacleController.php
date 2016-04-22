@@ -6,6 +6,7 @@ use App\Obstacle;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Mockery\CountValidator\Exception;
 
 class ObstacleController extends Controller
 {
@@ -37,11 +38,17 @@ class ObstacleController extends Controller
      */
     public function store(Request $request)
     {
-        $obstacle=new Obstacle();
-        $obstacle->size=$request->size;
-        $obstacle->lat=$request->lat;
-        $obstacle->lon=$request->lon;
-        echo $obstacle->save();
+        try{
+            $obstacle=new Obstacle();
+            $obstacle->size=$request->size;
+            $obstacle->lat=$request->lat;
+            $obstacle->lon=$request->lon;
+            $obstacle->save();
+            return $obstacle->id;
+        }catch (Exception $ex){
+            return $ex->getMessage();
+        }
+
     }
 
     /**
@@ -86,6 +93,11 @@ class ObstacleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            Obstacle::find($id)->delete();
+            return 1;
+        }catch (Exception $ex){
+            return $ex->getMessage();
+        }
     }
 }
