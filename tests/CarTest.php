@@ -14,6 +14,7 @@ class CarTest extends TestCase
      */
     public function testExample()
     {
+        $this->get('/car/')->seeJson();
         $this->get('/car/add/1')->seeJsonStructure(['*'=>[]]);
         $this->get('/car/1')->seeJsonStructure(['id','name']);
         $this->get('car/delete/1')->see('1');
