@@ -31,7 +31,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('car/delete/{id}','CarController@delete');
     Route::resource('car','CarController');
 
-    Route::resource('operate','OperateController');
+    Route::resource('operate','OperateController')->middleware(['cors']);
 
-    Route::resource('obstacle','ObstacleController');
+    Route::resource('obstacle','ObstacleController')->middleware(['cors']);
 });
