@@ -14,14 +14,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property boolean $added 是否添加
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @method static \Illuminate\Database\Query\Builder|\App\Car whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Car whereName($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Car whereLat($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Car whereLon($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Car whereAdded($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Car whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Car whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 class Car extends Model
 {

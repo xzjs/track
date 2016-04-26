@@ -27,11 +27,11 @@ Route::group(['middleware' => ['web']], function () {
         return 'hello world';
     });
 
-    Route::get('car/add/{num?}',['middleware' => 'cors','CarController@add']);
-    Route::get('car/delete/{id}',['middleware' => 'cors','CarController@delete']);
-    Route::resource('car',['middleware' => 'cors','CarController']);
+    Route::get('car/add/{num?}','CarController@add')->middleware(['cors']);
+    Route::get('car/delete/{id}','CarController@delete');
+    Route::resource('car','CarController');
 
-    Route::resource('operate',['middleware' => 'cors','OperateController']);
+    Route::resource('operate','OperateController');
 
-    Route::resource('obstacle',['middleware' => 'cors','ObstacleController']);
+    Route::resource('obstacle','ObstacleController');
 });
