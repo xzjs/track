@@ -126,7 +126,6 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -152,6 +151,7 @@ return [
         /*
          * Application Service Providers...
          */
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,

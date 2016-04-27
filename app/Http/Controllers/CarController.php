@@ -79,7 +79,7 @@ class CarController extends Controller
      */
     public function destroy($id)
     {
-        echo Car::find($id)->delete();
+
     }
 
     /**
