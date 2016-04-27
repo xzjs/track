@@ -14,8 +14,8 @@
 // 测试时，请把ak和serviceId写在这里，或是写在地址栏中
 // file:///D:/web%20demo%20v2.0/index.html?i=12345&k=FGHJFGHJGHJGH
 
-var Test_ak = 'WqEEVSF8TvNG4BXalw9Q97pSMmEvaNNz';
-var ServiceId = '114016';
+var Test_ak = 'ABMyPFHzCuKItIEoAG2FZjtt';
+var ServiceId = '112988';
 // var Test_ak ='wWy2A8K94nhntYTYUHS19RXW';
 // var ServiceId = '164342';
 define('track/util', function () {
