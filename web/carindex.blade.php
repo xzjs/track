@@ -596,8 +596,8 @@
                 <div id="paper-middle">
                     <!--<div id="mapContainer"></div>-->
                     <!-- <iframe name="mapContainer" src="http://xzjs.love/track/public/view"  width="100%" height="399px"></iframe> -->
-                    <iframe name="mapFrame" src="http://localhost/track/public/mapIndex.blade.php"  width="50%" height="399px" style="float:left"></iframe>
-                    <iframe name="animateFrame" src="http://localhost/track/public/carAni.blade.php"  width="50%" height="399px" style="float:left"></iframe>
+                    <iframe name="mapFrame" src="http://localhost/track/web/mapIndex.blade.php"  width="50%" height="399px" style="float:left"></iframe>
+                    <iframe name="animateFrame" src="http://localhost/track/web/carAni.blade.php"  width="50%" height="399px" style="float:left"></iframe>
                 </div>
                     <!--  DEVICE MANAGER -->
                 <div class="content-wrap">
