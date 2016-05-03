@@ -4,6 +4,7 @@ var main = {
         truck.init();
         barrier.init();
         manInterv.init();
+        carCong.init();
     },
     bind: function(){
         this.bindControlConfig();

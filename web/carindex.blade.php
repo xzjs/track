@@ -240,7 +240,7 @@
                     <div class="side-bar">
                         <ul class="topnav menu-left-nest">
                             <li>
-                                <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                                <a href="#J_carConfgWrapper" style="border-left:0px solid!important;" class="title-menu-left">
                                     <span class="menu">无人车控制</span>
                                     <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
                                 </a>
@@ -258,13 +258,46 @@
                                             <span class="glyphicon glyphicon-cog fn-ml-96" aria-hidden="true" id="J_TruckCog"></span>
                                         </a>
                                         <form id="J_TruckCogForm" class="cogForm">
-                                            <p>
+                                            <!-- <p>
                                                 <a href="javascript:void(0);" class="cogFormA"><span class="glyphicon glyphicon-plus" aria-hidden="true" id="J_TruckCogPlus"></span></a>
                                                 <input type="text" value=0 id="J_TruckCogNum">
                                                 <a href="javascript:void(0);" class="cogFormA"><span class="glyphicon glyphicon-minus" aria-hidden="true" id="J_TruckCogMinus"></span></a>
+                                            </p> -->
+                                            <p>
+                                                <label for="J_moveStartP">车辆起点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input class="form-control" type="text" id="J_moveStartP">
                                             </p>
                                             <p>
-                                                <button type="button" class="btn btn-info btn-xs" id="J_TruckCogBtn">确定</button>
+                                                <label for="J_moveEndP">车辆终点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input class="form-control" type="text" id="J_moveEndP">
+                                            </p>
+                                            <p>
+                                                <label for="J_moveMustP">车辆必经点&nbsp;</label><input class="form-control" type="text" id="J_moveMustP">
+                                            </p>
+                                            <p>
+                                                <label for="J_moveStartS">初始速度&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input class="form-control" type="text" id="J_moveStartS">
+                                            </p>
+                                            <p>
+                                                <label for="J_moveStartHS">最高速度&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input class="form-control" type="text" id="J_moveStartHS">
+                                            </p>
+                                            <p>
+                                                <label for="">开启防撞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" id="J_avoidCrashY" value="Y"> 是
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" id="J_avoidCrashN" value="N"> 否
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label for="J_changePath">更换路径&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" id="J_changePathY" value="Y"> 是
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" id="J_changePathN" value="N"> 否
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <button type="button" class="btn btn-info btn-xs pull-right" id="J_TruckCogBtn">确定</button>
                                             </p>
                                         </form>
                                     </li>
@@ -596,12 +629,92 @@
                 <div id="paper-middle">
                     <!--<div id="mapContainer"></div>-->
                     <!-- <iframe name="mapContainer" src="http://xzjs.love/track/public/view"  width="100%" height="399px"></iframe> -->
-                    <iframe name="mapFrame" src="http://localhost/track/web/mapIndex.blade.php"  width="50%" height="399px" style="float:left"></iframe>
-                    <iframe name="animateFrame" src="http://localhost/track/web/carAni.blade.php"  width="50%" height="399px" style="float:left"></iframe>
+                    <iframe name="mapFrame" src="http://localhost/track/web/mapIndex.blade.php"  width="50%" height="420px" style="float:left"></iframe>
+                    <iframe name="animateFrame" src="http://localhost/track/web/carAni.blade.php"  width="50%" height="420px" style="float:left"></iframe>
                 </div>
                     <!--  DEVICE MANAGER -->
-                <div class="content-wrap">
-                    <div class="row">
+                <div class="content-wrap car-confg-wrapper" id="J_carConfgWrapper">
+                    <!-- 无人车配置表格 -->
+                    <ul id="breadcrumb">
+                        <li>
+                            <span class="entypo-cog config-wrap"></span>
+                        </li>
+                        <li>
+                            <i class="fa fa-lg"></i>
+                        </li>
+                        <li>
+                            <a href="#" title="Sample page 1">无人车控制</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-lg fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#" title="Sample page 1">无人车配置信息</a>
+                        </li>
+                    </ul>
+                    <div class="car-confg-info">
+                        <ul class="car-confg-type" id="J_CarConfgType">
+                            <li data-id=0 class="active"><a href="#J_carConfgTab1">物流车</a></li>
+                            <li data-id=1><a href="#J_carConfgTab2">公交车</a></li>
+                            <li data-id=2><a href="#J_carConfgTab3">出租车</a></li>
+                            <li data-id=3><a href="#J_carConfgTab4">特种车</a></li>
+                        </ul>
+                        <div class="car-confg-cont">
+                            <div class="car-info-deal">
+                                <button class="btn btn-danger" id="delCar">删除</button>
+                                <button class="btn btn-info" id="editCar">修改</button>
+                                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">导出</button>
+                            </div>
+                            <div class="car-info-show">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form class="form-inline">
+                                            <label for="showNum" style="width:12%">每页显示</label>
+                                            <select class="form-control" id="showNum" style="width:30%">
+                                                <option value="">5</option>
+                                                <option value="">10</option>
+                                                <option value="">15</option>
+                                                <option value="">20</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form class="form-inline">
+                                            <input type="text" class="form-control" id="searchCar" placeholder="搜索...">
+                                            <button class="btn btn-primary" id="searchCarBtn">提交</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- 起点、终点、必经点、最高速度、是否开启防撞、是否更换路径配置 -->
+                                <table class="car-info-tb table table-striped table-bordered" id="J_CarInfo">
+                                    <thead>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>车辆编号</td>
+                                            <td>车辆起点</td>
+                                            <td>车辆终点</td>
+                                            <td>车辆必经点</td>
+                                            <td>初始速度</td>
+                                            <td>最高速度</td>
+                                            <td>开启防撞</td>
+                                            <td>更换路径</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="row">
+                                    <div class="car-info-page col-md-4 col-md-offset-4">
+                                        <ul class="pagination">
+                                            <li><a id="J_carTotalPage" href="javascript:void(0);">共2页</a></li>
+                                            <li><a id="J_carPrevPage" href="javascript:void(0);">上一页</a></li>
+                                            <li><a id="J_carCurPage" href="javascript:void(0);">1</a></li>
+                                            <li><a id="J_carAfterPage" href="javascript:void(0);">下一页</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
                         <div class="col-lg-3">
                             <div class="profit" id="profitClose">
                                 <div class="headline ">
@@ -710,7 +823,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             <!--  / DEVICE MANAGER -->
                 <div class="content-wrap">
@@ -1281,5 +1394,6 @@
     <script type="text/javascript" src="./static/main/js/car-truck.js"></script>
     <script type="text/javascript" src="./static/main/js/barrier.js"></script>
     <script type="text/javascript" src="./static/main/js/manInterv.js"></script>
+    <script type="text/javascript" src="./static/main/js/carCong.js"></script>
     <script type="text/javascript" src="./static/main/js/car-index.js"></script>
 </html>
