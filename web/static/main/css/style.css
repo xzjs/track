@@ -3090,12 +3090,23 @@ small.pull-right {
 .cogForm input{
     display: inline-block;
 }
-/*.cogForm>p{
+.barrier-cogForm{
+    position: absolute;
+    width:77%;
+    height:110px;
+    background: #5B748F;
+    border-radius:10px;
+    z-index:100;
+    top: 255px;
+    left: 200px;
+    padding:15px;
+    box-shadow: 1px 1px #5B748F;
+}
+.barrier-cogForm>p{
     margin:0; 
 }
 .cogFormA,.cogFormA:visited{
     display: inline-block;
-    width: 12%;
     height: 20px;
     line-height: 1;
     text-decoration: none;
@@ -3109,28 +3120,39 @@ small.pull-right {
     color: #fff;
     text-decoration: none;
 }
-.cogForm .glyphicon{
+.barrier-cogForm .glyphicon{
     width: 100%;
     height: 100%;
     left: 0 !important;
     cursor: pointer;
 }
-.cogForm .glyphicon:first-child{
-    /*margin-left: -10px;*/
+.barrier-cogForm .glyphicon:first-child{
+    margin-left: -10px;
 }
-.cogForm .glyphicon:last-child{
-    /*margin-left: -18px;*/
+.barrier-cogForm .glyphicon:last-child{
+    margin-left: 0;
+}
+.barrier-cogForm input{
+    width: 57%;
+    border-radius:8px;
+    color: #ccc !important;
+    text-indent: 5px;
+    padding: 3px; 
+}
+.barrier-cogForm>p:last-child{
+    padding: 14px 0;
+}
+.barrier-cogForm button{
+    float: right;
 }
 .cogForm input{
     width: 60%;
     margin:2px 0 2px 2px;
     padding: 3px;
-    border-radius: 6px;
     text-indent: 5px;
     border-radius:8px; 
     color: #ccc !important;
-    text-align: center;
-}*/
+}
 .cogForm button{
     float: right;
     padding: 3px 6px !important;

@@ -13,8 +13,8 @@
         <link rel="stylesheet" type="text/css" href="./static/main/js/progress-bar/number-pb.css">
         <style type="text/css">
             canvas#canvas4 {
-            position: relative;
-            top: 20px;
+                position: relative;
+                top: 20px;
             }
         </style>
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -373,7 +373,7 @@
                                             <span>设置路障</span>
                                             <span class="glyphicon glyphicon-cog fn-ml-82" aria-hidden="true" id="J_BarrierCog"></span>
                                         </a>
-                                        <form id="J_BarrierCogForm" class="cogForm">
+                                        <form id="J_BarrierCogForm" class="barrier-cogForm">
                                             <p>
                                                 <a href="javascript:void(0);" class="cogFormA"><span class="glyphicon glyphicon-plus" aria-hidden="true" id="J_BarrierCogPlus"></span></a>
                                                 <input type="text" value=0 id="J_BarrierCogNum">
